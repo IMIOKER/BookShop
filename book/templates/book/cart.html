@@ -1,0 +1,42 @@
+{% extends 'book/base.html' %}
+{% load static %}
+
+{% block content %}
+
+<table class="table" style="width: 70%;justify-content: center; margin-left: 250px; margin-top: 60px; margin-bottom: 400px;">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col" style="color: black;"><b>Item</b></th>
+        <th scope="col" style="color: black;"><b>Price</b></th>
+        <th scope="col" style="color: black;"><b>Quantity</b></th>
+      </tr>
+    </thead>
+    <tbody>
+        {% for item in items %}
+      <tr>
+        <th style="color: black;" scope="row">{{forloop.counter}}</th>
+        <td style="color: black;">{{item.item.name}}</td>
+        <td style="color: black;">${{item.item.price}}</td>
+        <td>
+            <a href="{% url 'more' item.slug %}">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart-plus-fill" viewBox="0 0 16 16">
+                    <path d="M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1H.5zM6 14a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm7 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0zM9 5.5V7h1.5a.5.5 0 0 1 0 1H9v1.5a.5.5 0 0 1-1 0V8H6.5a.5.5 0 0 1 0-1H8V5.5a.5.5 0 0 1 1 0z"/>
+                </svg>
+            </a>
+
+            <a style="margin-left: 10px;" href="{% url 'remove' item.slug %}">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart-dash-fill" viewBox="0 0 16 16">
+                    <path d="M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1H.5zM6 14a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm7 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0zM6.5 7h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 1 0-1z"/>
+                  </svg>
+            </a>
+        </td>
+      </tr>
+        {% endfor %}
+    </tbody>
+</table>
+<a href="{% url 'check' %}" class="btn btn-success" style="border-radius: 10px; margin-top: -700px; margin-left: 370px;"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bag-check-fill" viewBox="0 0 16 16">
+    <path fill-rule="evenodd" d="M10.5 3.5a2.5 2.5 0 0 0-5 0V4h5v-.5zm1 0V4H15v10a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V4h3.5v-.5a3.5 3.5 0 1 1 7 0zm-.646 5.354a.5.5 0 0 0-.708-.708L7.5 10.793 6.354 9.646a.5.5 0 1 0-.708.708l1.5 1.5a.5.5 0 0 0 .708 0l3-3z"/>
+  </svg>   Checkout</a>
+<button type="button" class="btn btn-warning" style="border-radius: 10px; margin-top: -700px; margin-left: -250px;">${{order.get_final}}</button>
+{% endblock content %}

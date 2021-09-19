@@ -1,0 +1,13 @@
+{% extends 'book/base.html' %}
+{% load static %}
+{% block link %}
+<link rel="stylesheet" href="{% static 'css/acc.css' %}">
+{% endblock link %}
+{% block content %}
+<form action="{% url 'signup' %}" method="POST" style="margin-left: 30%; ">
+    {% csrf_token %}
+    {{form}}
+    <button type="submit" class="btn btn-primary">Signup</button>
+</form>
+<a href="{% url 'login' %}" class="btn btn-primary" style="background-color: rgb(111, 111, 214); border: 0px; border-radius: 15px; margin-left: 670px;">have an account? Login</a>
+{% endblock content %}

@@ -1,0 +1,26 @@
+{% extends 'book/base.html' %}
+{% load static %}
+
+{% block content %}
+<form class="row g-3" style="margin: 250px;" action="{% url 'check' %}" method="POST">
+    {% csrf_token %}
+    <div class="col-md-6">
+      <label for="inputEmail4" class="form-label">Receiver</label>
+      <input type="text" class="form-control" id="inputEmail4" name="name" style="border-radius: 9px; border: black solid;">
+    </div>
+    <div class="col-md-6">
+      <label for="inputPassword4" class="form-label">Phone</label>
+      <input type="text" class="form-control" id="inputPassword4" name="phone" style="border-radius: 9px; border: black solid;">
+    </div>
+    <div class="col-12">
+      <label for="inputAddress" class="form-label">Address</label>
+      <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St" name="address" style="border-radius: 9px; border: black solid;">
+    </div>
+    <div class="col-md-2" style="margin-top: 25px;">
+        <h3>final price : ${{order.get_final}}</h3>
+      </div>
+    <div class="col-12">
+      <button type="submit" class="btn btn-primary" style="border-radius:10px ; margin-top: 20px; margin-left: -10px;">Pay</button>
+    </div>
+  </form>
+{% endblock content %}

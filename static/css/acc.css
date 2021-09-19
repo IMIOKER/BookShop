@@ -1,0 +1,29 @@
+.helptext{
+    display: none;
+    visibility: hidden;
+}
+
+label {
+    margin-left: 120px;
+}
+
+input {
+    margin-top: 10px;
+    margin-left: 10px;
+    border-radius: 5px;
+}
+
+input[name="username"] {
+    width: 268px;
+}
+
+input[name="password1"] {
+    width: 268px;
+}
+
+button {
+    margin-top: 50px;
+    margin-left: 100px;
+    width: 400px;
+    border-radius: 15px;
+}
